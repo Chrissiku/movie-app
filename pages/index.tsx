@@ -1,13 +1,37 @@
 import { Inter } from "@next/font/google";
 import SubHomePage from "@/components/pages/Home";
+import { useContext, useEffect } from "react";
+import { GlobalContext } from "./_app";
 const inter = Inter({ subsets: ["latin"] });
 
-type Data = {
-  data: any;
+type MovieData = {
+  text: String;
+  setMovies: any;
+  Search: any;
 };
 
-const Home = ({ data }: Data) => {
+const Home = ({ data }: { data: MovieData }) => {
+  const { text, setMovies } = useContext(GlobalContext);
   console.log({ movieData: data });
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      await fetch(`http://www.omdbapi.com/?apikey=208c5684&s=${text}`)
+        .then((response) => response.json())
+        .then((res) => {
+          setMovies(res?.Search);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    fetchMovies();
+  }, [text, setMovies]);
+
+  useEffect(() => {
+    setMovies(data?.Search);
+  }, [setMovies, data]);
+
   return (
     <>
       <div>

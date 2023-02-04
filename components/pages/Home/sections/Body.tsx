@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import MovieCard from "./MovieCard";
+import { GlobalContext } from "@/pages/_app";
 
 const Body = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  //   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  const { movies } = useContext(GlobalContext);
   return (
     <div className="container my-14 text-white">
-      {arr?.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 border">
-          {arr.map((data, index) => (
-            <MovieCard key={index} data={data} />
+      {movies?.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
+          {movies.map((movie, index) => (
+            <MovieCard key={index} data={movie} />
           ))}
         </div>
       ) : (

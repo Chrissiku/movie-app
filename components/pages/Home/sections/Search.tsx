@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "@/pages/_app";
 import { DebounceInput } from "react-debounce-input";
 
 const Search = () => {
-  const [text, setText] = useState("");
+  const { text, setText } = useContext(GlobalContext);
   return (
     <div className="container text-white inline-flex justify-center items-center gap-4 mt-14">
-      <span>Search by title</span>
+      {text ? (
+        <span>Search :</span>
+      ) : (
+        <span>
+          <span className="text-lg">Not Found</span>
+        </span>
+      )}
       <DebounceInput
         debounceTimeout={10}
         type="text"
