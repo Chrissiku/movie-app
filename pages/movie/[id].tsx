@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
       props: { data: response },
     };
   } catch (error) {
-    console.log(error);
+
   }
   return {
     props: { data: null },

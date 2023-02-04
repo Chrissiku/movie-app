@@ -12,7 +12,6 @@ type MovieData = {
 
 const Home = ({ data }: { data: MovieData }) => {
   const { text, setMovies } = useContext(GlobalContext);
-  console.log({ movieData: data });
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -22,7 +21,7 @@ const Home = ({ data }: { data: MovieData }) => {
           setMovies(res?.Search);
         })
         .catch((error) => {
-          console.log(error);
+
         });
     };
     fetchMovies();
@@ -53,7 +52,7 @@ export const getServerSideProps = async () => {
       props: { data: response },
     };
   } catch (error) {
-    console.log(error);
+
   }
 };
 

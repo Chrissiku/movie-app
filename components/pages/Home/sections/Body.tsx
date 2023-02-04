@@ -3,9 +3,25 @@ import Image from "next/image";
 import MovieCard from "./MovieCard";
 import { GlobalContext } from "@/pages/_app";
 
+interface Movie {
+  movies: Array<{
+    Title: string;
+    Year: string;
+    imdbID: string;
+    Type: string;
+    Poster: string;
+  }>;
+}
+
+type GlobalContextType = {
+  movies: Movie[];
+};
+
 const Body = () => {
   //   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-  const { movies } = useContext(GlobalContext);
+  // const { movies }: Movie = useContext(GlobalContext);
+  const context = useContext(GlobalContext) as GlobalContextType;
+  const { movies } = context;
   return (
     <div className="container my-14 text-white">
       {movies?.length > 0 ? (

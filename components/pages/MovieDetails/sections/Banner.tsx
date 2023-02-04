@@ -1,10 +1,38 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext } from "react";
 import { GlobalContext } from "@/pages/_app";
-import Image from "next/image";
+
+interface Movie {
+  movies: Array<{
+    Title: string;
+    Poster: string;
+    Country: string;
+    Genre: string;
+    Language: string;
+    BoxOffice: string;
+    Runtime: string;
+    Director: string;
+    Writer: string;
+    Actors: string;
+    imdbVotes: string;
+    Plot: string;
+    Awards: string;
+    Released: string;
+    Website: string;
+  }>;
+}
+
+type GlobalContextType = {
+  movies: Movie[] | any;
+};
 
 const Banner = () => {
-  const { movieDetails } = useContext(GlobalContext);
+  // const { movieDetails } = useContext(GlobalContext);
+  const context = useContext(GlobalContext) as GlobalContextType;
+  const { movieDetails } = context;
+  // const { movies } = useContext(GlobalContext) as GlobalContextType;
+  // const movieDetails = movies[0];
+
   return (
     <div className="container text-white">
       <div className="flex lg:flex-row flex-col my-10">
