@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const MovieCard = ({ data }: any) => {
   return (
-    <Link href="/">
+    <Link href={`/movie/${data?.imdbID}`}>
       <div className="cursor-pointer mx-auto text-center">
         <div
           className="sm:w-[200px] sm:h-[300px] mx-auto w-[250px] h-[300px] scale-100 hover:scale-105

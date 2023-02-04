@@ -44,7 +44,7 @@ const Home = ({ data }: { data: MovieData }) => {
 export const getServerSideProps = async () => {
   try {
     const response = await fetch(
-      "http://www.omdbapi.com/?apikey=208c5684&s=Batman"
+      `http://www.omdbapi.com/?apikey=208c5684&s=Batman`
     )
       .then((result) => result.json())
       .then((res) => res);
