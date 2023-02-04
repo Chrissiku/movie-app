@@ -4,13 +4,7 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "./_app";
 const inter = Inter({ subsets: ["latin"] });
 
-type MovieData = {
-  text: String;
-  setMovies: any;
-  Search: any;
-};
-
-const Home = ({ data }: { data: MovieData }) => {
+const Home = ({ data }) => {
   const { text, setMovies } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -20,9 +14,7 @@ const Home = ({ data }: { data: MovieData }) => {
         .then((res) => {
           setMovies(res?.Search);
         })
-        .catch((error) => {
-
-        });
+        .catch((error) => {});
     };
     fetchMovies();
   }, [text, setMovies]);
@@ -51,9 +43,7 @@ export const getServerSideProps = async () => {
     return {
       props: { data: response },
     };
-  } catch (error) {
-
-  }
+  } catch (error) {}
 };
 
 export default Home;

@@ -29,7 +29,7 @@ type GlobalContextType = {
 const Banner = () => {
   // const { movieDetails } = useContext(GlobalContext);
   const context = useContext(GlobalContext) as GlobalContextType;
-  const { movieDetails } = context;
+  const { movieDetails }: any = context;
   // const { movies } = useContext(GlobalContext) as GlobalContextType;
   // const movieDetails = movies[0];
 
