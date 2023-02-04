@@ -1,4 +1,5 @@
 import React from "react";
+import Body from "./sections/Body";
 import Header from "./sections/Header";
 import Search from "./sections/Search";
 
@@ -7,6 +8,7 @@ const SubHomePage = () => {
     <>
       <Header />
       <Search />
+      <Body />
     </>
   );
 };
